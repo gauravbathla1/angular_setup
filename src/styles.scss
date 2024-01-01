@@ -1,0 +1,265 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* You can add global styles to this file, and also import other style files */
+@use "@angular/material" as mat;
+
+$my-primary: mat.define-palette(mat.$blue-palette, 500);
+$my-accent: mat.define-palette(mat.$green-palette, A200, A100, A400);
+
+// The "warn" palette is optional and defaults to red if not specified.
+$my-warn: mat.define-palette(mat.$red-palette);
+
+$my-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $my-primary,
+      accent: $my-accent,
+      warn: $my-warn,
+    ),
+    typography: mat.define-typography-config(),
+    density: 0,
+  )
+);
+
+html,
+body {
+  height: 100%;
+}
+
+html {
+  font-size: 62.5%;
+}
+$success-color: #4ba85d;
+$danger-color: #dd4445;
+$info-color: #16a2af;
+$white-color: #fff;
+$table-row-hover: #dcd7d7;
+
+$alert-txt: #fff;
+ul,
+ol {
+  list-style: none;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+.image-section {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  overflow: hidden;
+}
+
+ul,
+ol {
+  list-style-type: none;
+}
+
+.txt-info {
+  color: $info-color;
+}
+
+.txt-danger {
+  color: $danger-color;
+}
+
+.txt-success {
+  color: $success-color;
+}
+
+.txt-white {
+  color: $white-color;
+}
+
+.alert {
+  color: $alert-txt;
+}
+
+.alert-success {
+  background-color: $success-color;
+}
+
+.alert-danger {
+  background-color: $danger-color;
+}
+
+.alert-info {
+  background-color: $info-color;
+}
+
+.bg-success {
+  background-color: $success-color;
+}
+
+.confirm-dialog mat-dialog-container {
+  border-radius: 1rem !important;
+  padding: 2rem !important;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: scroll;
+  position: relative;
+  flex-grow: 1;
+
+  .loader {
+    width: 100%;
+    padding: 5rem;
+    box-sizing: border-box;
+    display: grid;
+    box-sizing: border-box;
+    place-items: center;
+  }
+
+  .no-data {
+    width: 100%;
+    height: 60px;
+    display: grid;
+    place-items: center;
+
+    span {
+      font-size: 2rem;
+    }
+  }
+
+  table {
+    width: 100%;
+    min-width: 65rem;
+    // min-height: calc(100vh - 120px);
+
+    .data-row:hover {
+      background-color: $table-row-hover;
+    }
+  }
+}
+
+// html,
+// body {
+//   height: 100%;
+// }
+
+// body {
+//   margin: 0;
+//   font-family: Roboto, "Helvetica Neue", sans-serif;
+//   word-break: break-all;
+// }
+
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-loader {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  mat-spinner {
+    display: inline;
+  }
+}
+
+.page-loader {
+  height: 90%;
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+.search-bar-box {
+  margin: 0% 5px;
+  width: 25rem;
+  height: 36px;
+  box-sizing: border-box;
+  border: 0.1rem solid #888;
+  padding: 0.5rem;
+  background-color: #eee;
+  border-radius: 5px;
+  display: flex;
+  margin-right: 0.5rem;
+  overflow: hidden;
+  //max-width: 22rem;
+
+  .search-bar {
+    height: 100%;
+    width: 100%;
+    display: flex;
+
+    input {
+      border: none;
+      outline: none;
+      flex: 1;
+      font-size: 1.6rem;
+      background-color: #eee;
+
+      &::placeholder {
+        // color:adjust-color($primary-color, $red: 1, $green: 2, $blue: 3, $hue: 0, $saturation: 0%, $lightness: 0%, $alpha: 1.0);
+        color: #888;
+        height: 3rem;
+      }
+    }
+  }
+}
+
+.mat-mdc-list-item .mdc-list-item__primary-text {
+  cursor: pointer !important;
+}
+
+// ::ng-deep .mat-drawer-inner-container {
+//   background-color: #fcfcfc !important;
+// }
+.buttons-table-header {
+  margin-left: 13px !important;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+}
+
+.swal2-styled.swal2-cancel {
+  background-color: #6e7881;
+  font-size: 14px !important;
+}
+
+.swal2-styled.swal2-confirm {
+  background-color: #7066e0;
+  font-size: 14px !important;
+}
+
+.swal2-styled.swal2-confirm:focus {
+  box-shadow: none !important;
+}
+
+.swal2-container.swal2-center > .swal2-popup {
+  padding: 20px !important;
+}
+
+.swal2-title {
+  font-size: 24px !important;
+  font-weight: 400 !important;
+}
+
+.modal-backdrop {
+  z-index: 9999 !important;
+}
+.swal2-html-container {
+  font-size: 16px !important;
+}
+
+.swal2-styled.swal2-confirm {
+  width: 150px;
+  white-space: nowrap;
+}

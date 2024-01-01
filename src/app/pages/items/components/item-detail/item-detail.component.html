@@ -1,0 +1,165 @@
+<div class="editWrapper mt-4 container">
+  <button class="edit-btn" (click)="editItem()">Edit</button>
+</div>
+
+<form class="container form_container">
+  <div class="row">
+    <div class="mb-3 col-md-4">
+      <label for="exampleInputEmail1" class="form-label">Item Name *</label>
+      <input
+        type="email"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        disabled
+        value="{{ itemDetails?.itemName }}"
+      />
+    </div>
+    <div class="col-md-4 form-box">
+      <label for="exampleInputText1" class="form-label"
+        >Select Item Owner *</label
+      >
+      <div class="select-box">
+        <select
+          class="form-select"
+          [value]="itemDetails.itemOwner"
+          disabled
+          aria-label="Default select example"
+        >
+          <option value="1">Owner</option>
+          <option value="2">Loaner</option>
+          <option value="3">Consignment</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-4 form-box">
+      <label for="exampleInputText1" class="form-label">Owner *</label>
+      <input
+        type="text"
+        disabled
+        value="{{ itemDetails?.ownerName }}"
+        class="form-control"
+        id="exampleInputText1"
+      />
+    </div>
+    <div class="col-md-4 form-box">
+      <label for="exampleInputText1" class="form-label">Base location *</label>
+      <input
+        type="text"
+        disabled
+        value="{{ itemDetails?.baseLocation }}"
+        class="form-control"
+        id="exampleInputText1"
+      />
+    </div>
+    <div class="col-md-4 form-box">
+      <label for="exampleInputText1" class="form-label"
+        >Current location *</label
+      >
+      <input
+        type="text"
+        disabled
+        class="form-control"
+        value="{{ itemDetails?.baseLocation }}"
+        id="exampleInputText1"
+      />
+    </div>
+    <div class="col-md-4 form-box">
+      <label for="exampleInputText1" class="form-label">Borrower name *</label>
+      <input
+        type="text"
+        disabled
+        class="form-control"
+        value="{{ itemDetails?.baseLocation }}"
+        id="exampleInputText1"
+      />
+    </div>
+
+    <div class="col-md-4 form-box">
+      <label for="exampleInputText1" class="form-label">Brand* *</label>
+      <input
+        type="text"
+        disabled
+        class="form-control"
+        value="{{ itemDetails?.brand }}"
+        id="exampleInputText1"
+      />
+    </div>
+    <div class="col-md-4 form-box">
+      <label for="exampleInputText1" class="form-label">Type *</label>
+      <input
+        type="text"
+        disabled
+        class="form-control"
+        value="{{ itemDetails?.type }}"
+        id="exampleInputText1"
+      />
+    </div>
+    <div class="col-md-4 form-box">
+      <label for="exampleInputText1" class="form-label">Custom1 *</label>
+      <input
+        type="text"
+        disabled
+        class="form-control"
+        value="{{ itemDetails?.custom1 }}"
+        id="exampleInputText1"
+      />
+    </div>
+    <div class="col-md-4 form-box">
+      <label for="exampleInputText1" class="form-label">Custom2 *</label>
+      <input
+        type="text"
+        disabled
+        class="form-control"
+        value="{{ itemDetails?.custom2 }}"
+        id="exampleInputText1"
+      />
+    </div>
+
+    <!-- <div class="col-md-4 form-box">
+      <label for="exampleInputText1" class="form-label">Add PDF *</label>
+      <input type="file" name="" id="" />
+    </div> -->
+    <div class="col-md-4 form-box">
+      <label for="exampleInputText1" class="form-label">Item Id *</label>
+      <input
+        type="text"
+        disabled
+        class="form-control"
+        value="{{ itemDetails?.itemId }}"
+        id="exampleInputText1"
+      />
+    </div>
+    <div class="col-md-4 form-box">
+      <label for="exampleInputText1" class="form-label">Images</label>
+      <div class="profile_image">
+        <div
+          class="item_image"
+          *ngFor="let image of itemDetails?.images"
+          (click)="OpenImageModal( baseUrl + image)"
+        >
+          <img
+            src="{{ baseUrl + image }}"
+            alt=""
+            srcset=""
+            width="150px"
+            height="100px"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 form-box" *ngIf="itemDetails?.qrcode !== ''">
+      <label for="exampleInputText1" class="form-label">QR code</label>
+      <div class="item_image">
+        <img
+          *ngIf="itemDetails?.qrcode !== ''"
+          src="{{ baseUrl + itemDetails?.qrcode }}"
+          width="150px"
+          height="100px"
+          alt=""
+          srcset=""
+        />
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,28 @@
+.confirm-container {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  p {
+    font-family: "Times New Roman", Times, serif;
+  }
+  .buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+}
+
+::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface {
+  padding: 40px;
+}
+.message {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.btn-confirm {
+  background-color: #ed2028 !important;
+  color: #fff !important;
+}

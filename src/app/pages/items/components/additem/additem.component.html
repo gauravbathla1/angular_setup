@@ -1,0 +1,157 @@
+<form [formGroup]="addItemForm" class="container form_container">
+  <div class="row">
+    <div class="mb-3 col-md-4">
+      <label for="exampleInputEmail1" class="form-label">Item Name *</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+        formControlName="itemName" />
+      <small
+        *ngIf="(invalid && addItemForm?.get('itemName')?.hasError('required')) ||(addItemForm.controls.itemName.touched && addItemForm?.get('itemName')?.hasError('required'))"
+        class="text-danger">
+        Item Name is required</small>
+      <small *ngIf="(invalid && addItemForm?.get('itemName')?.hasError('maxlength'))" class="text-danger">
+        Item Name limit is 50 character.
+      </small>
+    </div>
+    <div class="col-md-4 form-box">
+      <label for="exampleInputText1" class="form-label">Select Item Owner *</label>
+      <div class="select-box">
+        <select formControlName="itemOwner" class="form-select" aria-label="Default select example">
+          <option value="1" selected>Owner</option>
+          <option value="2">Loaner</option>
+          <option value="3">Consignment</option>
+        </select>
+      </div>
+      <small
+        *ngIf="(invalid && addItemForm?.get('itemOwner')?.hasError('required')) ||(addItemForm.controls.itemOwner.touched && addItemForm?.get('itemOwner')?.hasError('required'))"
+        class="text-danger ">
+        Item Owner is required</small>
+    </div>
+    <div class="col-md-4 form-box">
+      <label for="exampleInputText1" class="form-label">Item Id* *</label>
+      <input type="text" class="form-control" formControlName="itemId" id="exampleInputText1" />
+      <small
+        *ngIf="(invalid && addItemForm?.get('itemId')?.hasError('required')) ||(addItemForm.controls.itemId.touched && addItemForm?.get('itemId')?.hasError('required'))"
+        class="text-danger ">
+        Item Id is required</small>
+      <small *ngIf="(invalid && addItemForm?.get('itemId')?.hasError('maxlength'))" class="text-danger">
+        Item Id limit is 50 character.
+      </small>
+    </div>
+    <div class="col-md-4 form-box">
+      <label for="exampleInputText1" class="form-label">Base location *</label>
+      <input type="text" class="form-control" formControlName="baseLocation" id="exampleInputText1" />
+      <small
+        *ngIf="(invalid && addItemForm?.get('baseLocation')?.hasError('required')) ||(addItemForm.controls.baseLocation.touched && addItemForm?.get('baseLocation')?.hasError('required'))"
+        class="text-danger ">
+        Base location is required</small>
+      <small *ngIf="(invalid && addItemForm?.get('baseLocation')?.hasError('maxlength'))" class="text-danger">
+        Base location limit is 50 character.
+      </small>
+    </div>
+    <div class="col-md-4 form-box">
+      <label for="exampleInputText1" class="form-label">Brand *</label>
+      <input type="text" class="form-control" formControlName="brand" id="exampleInputText1" />
+      <small
+        *ngIf="(invalid && addItemForm?.get('brand')?.hasError('required')) ||(addItemForm.controls.brand.touched && addItemForm?.get('brand')?.hasError('required'))"
+        class="text-danger ">
+        Brand is required</small>
+      <small *ngIf="(invalid && addItemForm?.get('brand')?.hasError('maxlength'))" class="text-danger">
+        Brand limit is 50 character.
+      </small>
+    </div>
+    <div class="col-md-4 form-box">
+      <label for="exampleInputText1" class="form-label">Type *</label>
+      <input type="text" class="form-control" formControlName="type" id="exampleInputText1" />
+      <small
+        *ngIf="(invalid && addItemForm?.get('type')?.hasError('required')) ||(addItemForm.controls.type.touched && addItemForm?.get('type')?.hasError('required'))"
+        class="text-danger ">
+        Type is required</small>
+      <small *ngIf="(invalid && addItemForm?.get('type')?.hasError('maxlength'))" class="text-danger">
+        Type limit is 50 character.
+      </small>
+    </div>
+
+    <div class="col-md-4 form-box">
+      <label for="exampleInputText1" class="form-label">Custom1 *</label>
+      <input type="text" class="form-control" formControlName="custom1" id="exampleInputText1" />
+
+      <small
+        *ngIf="(invalid && addItemForm?.get('custom1')?.hasError('required')) ||(addItemForm.controls.custom1.touched && addItemForm?.get('custom1')?.hasError('required'))"
+        class="text-danger ">
+        Custom1 is required</small>
+      <small *ngIf="(invalid && addItemForm?.get('custom1')?.hasError('maxlength'))" class="text-danger">
+        Custom1 limit is 50 character.
+      </small>
+
+    </div>
+    <div class="col-md-4 form-box">
+      <label for="exampleInputText1" class="form-label">Custom2 *</label>
+      <input type="text" class="form-control" formControlName="custom2" id="exampleInputText1" />
+      <small
+        *ngIf="(invalid && addItemForm?.get('custom2')?.hasError('required')) ||(addItemForm.controls.custom2.touched && addItemForm?.get('custom2')?.hasError('required'))"
+        class="text-danger ">
+        Custom2 is required</small>
+      <small *ngIf="(invalid && addItemForm?.get('custom2')?.hasError('maxlength'))" class="text-danger">
+        Custom2 limit is 50 character.
+      </small>
+    </div>
+    <div class="col-md-4 form-box" *ngIf="itemId ==''">
+      <label for="exampleInputText1" class="form-label">Upload picture *</label>
+      <input type="file" name="" id="" (change)="getFileDetails($event)" multiple="" />
+      <!-- <button class="btn-upload">Upload</button> -->
+    </div>
+    <div class="col-md-4 form-box">
+      <label for="exampleInputText1" class="form-label">Assign borrower *</label>
+      <!-- <input type="text" class="form-control" formControlName="borrower" id="exampleInputText1" /> -->
+      <div class="select-box">
+        <!-- *ngIf="itemId !==''" -->
+        <input *ngIf="itemId !==''" type="text" value="{{itemDetails?.borrowerId?.name}}" disabled>
+        <!-- <select *ngIf="itemId !==''" [attr.disabled]="true" formControlName="borrowerId" val  class="form-select" aria-label="Default select example">
+          <option  value="{{user?._id}}" *ngFor="let user of verifiedUsers">{{user?.name}}</option>
+        </select> -->
+        <!-- <option value="itemDetails?.borrowerId?._id">{{itemDetails?.borrowerId?.name}}</option> -->
+
+        <select *ngIf="itemId ==''" formControlName="borrowerId" class="form-select"
+          aria-label="Default select example">
+          <option value="{{user?._id}}" *ngFor="let user of verifiedUsers">{{user?.name}}</option>
+          <!-- <option value="2">Loaner</option>
+          <option value="3">Consignment</option> -->
+        </select>
+      </div>
+      <small
+        *ngIf="(invalid && addItemForm?.get('borrowerId')?.hasError('required')) ||(addItemForm.controls.borrowerId.touched && addItemForm?.get('borrowerId')?.hasError('required'))"
+        class="text-danger ">
+        borrower is required</small>
+      <small *ngIf="(invalid && addItemForm?.get('borrowerId')?.hasError('maxlength'))" class="text-danger">
+        borrower limit is 50 character.
+      </small>
+    </div>
+    <div class="col-md-4 form-box" *ngIf="itemId ==''">
+      <label for="exampleInputText1" class="form-label">Add PDF *</label>
+      <input type="file" name="" id="" (change)="getPdf($event)" accept="application/pdf" />
+    </div>
+  </div>
+
+  <div class="col-md-4 form-box" *ngIf="itemId !==''">
+    <label for="exampleInputText1" class="form-label">Images</label>
+    <div class="profile_image">
+      <div class="item_image" *ngFor="let image of itemDetails?.images"> <img src="{{baseUrl + image}}" alt="" srcset=""
+          width="150px" height="100px"></div>
+    </div>
+
+  </div>
+  <!-- <div class="row">
+    <p>
+      <a href="javascript:;"
+        >Generate QR code Against <br />
+        Item</a
+      >
+    </p>
+  </div> -->
+  <div class="row">
+    <div class="btn-wrapper">
+      <button class="btn-save" [disabled]="disable" *ngIf="itemId ==''" (click)="addItem()">Save</button>
+      <button class="btn-save" *ngIf="itemId !==''" (click)="addItem()">Edit</button>
+    </div>
+  </div>
+</form>
